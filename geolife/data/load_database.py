@@ -30,7 +30,7 @@ def load_into_db(filedir):
 		newdata = [data[0],data[1],data[2],time_s,time_l]
 		# print newdata
 		temp_list.append(newdata)
-		if len(temp_list) == 1000 :
+		if len(temp_list) > 0 :
 			try:
 				insert_into_db(temp_list)
 				print "Having inserted {0}".format(index)
@@ -60,8 +60,8 @@ def import_test():
 	print 'import successfully'
 
 # def main():
-# 	# filedir = 
-# 	# load_into_db(filedir)
+# 	filedir = 'Preclusterdata2.0.txt'
+# 	load_into_db(filedir)
 
 # if __name__ == '__main__':
 # 	main()

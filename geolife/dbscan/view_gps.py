@@ -11,11 +11,9 @@ def show_view():
 	x = list()
 	x = read_from_db()
 	x = np.array(x, np.float)
-	# print x
-	# plt.plot(x[:, 0], x[:, 1], '*', markerfacecolor='k',
-	# 	markeredgecolor='k', markersize=5)
-	plt.plot(x[:, 0],'*', markerfacecolor='k',
-		markeredgecolor='k', markersize=5)
+	print x
+	plt.plot(x[:, 0], x[:, 1], '*', markerfacecolor='k',
+		markeredgecolor='k', markersize=10)
 	plt.show()
 
 
@@ -23,12 +21,12 @@ def read_from_db():
 	x = list()
 	database = dbconn()
 	cursor = database.cursor()
-	sql = 'SELECT * FROM gps LIMIT 0,257 '
+	sql = 'SELECT * FROM gps LIMIT 0,100 '
 	cursor.execute(sql)
 	data = cursor.fetchall() 
 	for datum in data:
-		print datum
-		x.append([datum[2:4]])
+		# print datum
+		x.append(datum[2:4])
 		# print x
 	return x
 
@@ -36,6 +34,7 @@ def read_from_db():
 
 def main():
 	show_view()
+
 
 
 
