@@ -12,7 +12,7 @@ def read_from_db():
 	x = list()
 	database = dbconn()
 	cursor = database.cursor()
-	sql = 'SELECT * FROM gps LIMIT 0,100 '
+	sql = 'SELECT * FROM gps LIMIT 0,257 '
 	cursor.execute(sql)
 	data = cursor.fetchall() 
 	for datum in data:

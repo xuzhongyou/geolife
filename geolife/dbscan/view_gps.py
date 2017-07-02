@@ -30,11 +30,13 @@ def read_from_db():
 		# print x
 	return x
 
-
+a =[1,2] 
+def test():
+	print a
 
 def main():
-	show_view()
-
+	# show_view()
+	test()
 
 
 
