@@ -1,0 +1,23 @@
+In [27]: from datetime import datetime
+ 
+In [28]: a=datetime.now()
+ 
+In [29]: b=datetime.now()
+ 
+In [32]: a
+Out[32]: datetime.datetime(2015, 4, 7, 4, 30, 3, 628556)
+ 
+In [33]: b
+Out[33]: datetime.datetime(2015, 4, 7, 4, 34, 41, 907292)
+ 
+In [34]: str(a)                   字符串的转换，用户储存到文本或者数据库
+Out[34]: '2015-04-07 04:30:03.628556'
+ 
+In [35]:datetime.strptime(str(a),"%Y-%m-%d %H:%M:%S.%f")
+Out[35]:datetime.datetime(2015, 4, 7, 4, 30, 3, 628556)
+ 
+In [36]: (b-a)
+Out[36]: datetime.timedelta(0, 278, 278736)
+ 
+In [37]: (b-a).seconds              时间差的计算，单位为秒
+Out[37]: 278
