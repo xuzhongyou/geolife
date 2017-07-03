@@ -25,6 +25,8 @@ def calcDistance(Lat_A, Lng_A, Lat_B, Lng_B):
  
 # Lat_A=31.55; Lng_A=118.48 # 南京
 # Lat_B=39.54; Lng_B=116.25 # 北京
+# Lat_A = 40.00815346;Lng_A = 116.32036573
+# Lat_B = 39.99058599;Lng_B = 116.31282403
 # distance=calcDistance(Lat_A,Lng_A,Lat_B,Lng_B)
 # print('(Lat_A, Lng_A)=({0:10.3f},{1:10.3f})'.format(Lat_A,Lng_A))
 # print('(Lat_B, Lng_B)=({0:10.3f},{1:10.3f})'.format(Lat_B,Lng_B))

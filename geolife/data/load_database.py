@@ -56,12 +56,12 @@ def insert_into_db(temp_list):
 		cursor.close()
 		database.close()
 
-def import_test():
-	print 'import successfully'
+# def import_test():
+# 	print 'import successfully'
 
 # def main():
 # 	filedir = 'Preclusterdata2.0.txt'
 # 	load_into_db(filedir)
 
 # if __name__ == '__main__':
-# 	main()
+	# main()

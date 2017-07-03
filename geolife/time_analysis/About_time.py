@@ -3,17 +3,36 @@ sys.path.append("..")
 from datetime import datetime
 from data.load_database import *
 import numpy as np
-
+from distance import *
 
 time_list = list()
 diff_list = list()
-def read_time():
+
+
+def read_data_from_db():
 	database = dbconn()
 	cursor = database.cursor()
-	sql = "SELECT lat,lon,time_s,time_l FROM gps where userid= 0"
+	sql = "SELECT lat,lon,time_s,time_l FROM gps where user_id= 0"
 	cursor.execute(sql)
 	data = cursor.fetchall()
-	# print type(data[0][3])
+	print data
+	return data
+
+
+'''
+Function: read_time_to_matrix
+
+[[  39.98430324  116.30691753   12.            2.88333333]
+ [  39.99058599  116.31282403   26.            4.13333333]
+ [  40.00815346  116.32036573   38.            9.7       ]
+ ..., 
+ [  40.00461483  116.32234355    5.            2.88333333]
+ [  39.98341191  116.32692183   48.            3.06666667]
+ [  40.03493982  116.27468666  180.            4.73333333]]
+
+'''
+def read_time_to_matrix():
+	data = read_data_from_db()
 	data_mat = list()
 	for datum in data:
 		diff_time = (datum[3]-datum[2]).seconds/60
@@ -27,7 +46,23 @@ def read_time():
 	print data_mat
 	return data_mat
 
-def cal
+def read_data_to_traffic_matrix():
+	data = read_data_from_db()
+	traffic_matrix =list()
+	for index,datum in enumerate(data):
+		if index == len(data) - 1 :
+			break
+		else :
+			distance_ = calcDistance(float(datum[0]),float(datum[1]),
+				float(data[index+1][0]),float(data[index+1][1]))
+			time_ = (data[index+1][2]-datum[3]).seconds/60
+			hour = datum[2].hour + float(datum[2].minute)/60
+			traffic_matrix.append([distance_,time_,hour])
+	print traffic_matrix
+	return traffic_matrix
+
+
+
 
 def filter(data_mat):
 	pass
@@ -36,9 +71,10 @@ def filter(data_mat):
 
 
 def main():
-	read_time()
-	print time_list
-	print diff_list
+	# read_time()
+	# print time_list
+	# print diff_list
+	read_data_to_traffic_matrix()
 
 
 if __name__ == '__main__':

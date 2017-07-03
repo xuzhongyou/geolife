@@ -11,7 +11,7 @@ import json
 def read_data_from_db(userid):
 	database = dbconn()
 	cursor = database.cursor()
-	sql = "SELECT lat,lon FROM gps WHERE userid = %d"%(userid)
+	sql = "SELECT lat,lon FROM gps WHERE user_id = %d"%(userid)
 	# sql = "SELECT lat,lon FROM gps LIMIT 0,257"	
 	cursor.execute(sql)
 	X = cursor.fetchall()
