@@ -12,7 +12,7 @@ diff_list = list()
 def read_data_from_db():
 	database = dbconn()
 	cursor = database.cursor()
-	sql = "SELECT lat,lon,time_s,time_l FROM gps where user_id= 0"
+	sql = "SELECT lat,lon,time_s,time_l FROM gps where userid= 0"
 	cursor.execute(sql)
 	data = cursor.fetchall()
 	print data
@@ -56,8 +56,9 @@ def read_data_to_traffic_matrix():
 			distance_ = calcDistance(float(datum[0]),float(datum[1]),
 				float(data[index+1][0]),float(data[index+1][1]))
 			time_ = (data[index+1][2]-datum[3]).seconds/60
-			hour = datum[2].hour + float(datum[2].minute)/60
-			traffic_matrix.append([distance_,time_,hour])
+			hour2 = data[index+1][2].hour + float(datum[2].minute)/60
+			hour1 = datum[3].hour + float(datum[3].minute/60)
+			traffic_matrix.append([distance_,time_,hour1,hour2])
 	print traffic_matrix
 	return traffic_matrix
 
